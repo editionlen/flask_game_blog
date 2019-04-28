@@ -3,7 +3,7 @@ from .. import logger
 #公用方法
 from . import util
 #个人模块
-from .auth.func import syn_much_account_request, modify_personal_info
+from .auth.service import syn_much_account_request, modify_personal_info
 #游戏模块
 from .ranking.func import get_rank_tabs, get_game_list, get_gather_list
 #社区模块

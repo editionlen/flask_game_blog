@@ -32,10 +32,12 @@ def create_app():
 
     from .file import file as file_blueprint
     app.register_blueprint(file_blueprint)
+
+    from .main.auth import auth as auth_blueprint
+    app.register_blueprint(auth_blueprint)
     
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
     logger.info('game_circle start.')
     return app
-    

@@ -21,14 +21,19 @@ def syn_much_account_request(req):
         u = USERS.query.filter_by(DEVICE_SN=sn).first()
         if u is None:
             count = USERS.query.count()
+            print("dev", dev, count)
             u = USERS(DEVICE_SN=sn, DEVICE_CLASS=dev, ACCOUNT_NO=100000, GENDER=0,
-                      ACCOUNTNAME='游客_%d' % (count,), CREATED_BY=GAME_CIRCLE, CREATED_DATE=datetime.now(),
+                      ACCOUNTNAME='游客_%d' % (int(count) + 1), CREATED_BY=GAME_CIRCLE, CREATED_DATE=datetime.now(),
                       PERMISSION=0)
+            print("result", u)
             db.session.add(u)
+            print(1)
             db.session.commit()
+            print(2)
             logger.debug(u)
     except Exception as e:
         db.session.rollback()
+        print(e)
         logger.debug(e)
         return util.server_db_busy()
     
